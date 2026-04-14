@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JV Service LTDA – Mecânica Diesel</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2b3c;
+  --navy-mid: #1e3348;
+  --navy-light: #253545;
+  --orange: #e87722;
+  --orange-light: #f59a3a;
+  --white: #ffffff;
+  --off-white: #f5f7fa;
+  --gray-light: #e8edf3;
+  --gray: #8a9bb0;
+  --text: #1a2b3c;
+  --text-muted: #556677;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(26,43,60,0.97);
+  backdrop-filter: blur(12px);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  border-bottom: 2px solid var(--orange);
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo-icon {
+  width: 38px; height: 38px; background: var(--orange); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 800; color: white; letter-spacing: -1px;
+}
+.nav-logo-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 700; color: white; letter-spacing: 1px; line-height: 1.1;
+}
+.nav-logo-text span { display: block; font-size: 11px; font-weight: 300; color: var(--gray); letter-spacing: 3px; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75);
+  text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color .2s;
+}
+.nav-links a:hover { color: var(--orange); }
+.nav-cta {
+  background: var(--orange); color: white; padding: 9px 22px; border-radius: 4px;
+  font-size: 13px; font-weight: 600; text-decoration: none; letter-spacing: 0.5px;
+  transition: background .2s, transform .15s;
+}
+.nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; background: var(--navy);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden; padding-top: 64px;
+}
+.hero-bg-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px);
+}
+.hero-orange-bar { position: absolute; top: 64px; left: 0; right: 0; height: 4px; background: var(--orange); }
+.hero-circle-1 {
+  position: absolute; right: -120px; top: -80px; width: 520px; height: 520px; border-radius: 50%;
+  background: rgba(232,119,34,0.08); border: 1px solid rgba(232,119,34,0.12);
+}
+.hero-circle-2 {
+  position: absolute; right: 60px; top: 60px; width: 320px; height: 320px; border-radius: 50%;
+  background: rgba(232,119,34,0.06); border: 1px solid rgba(232,119,34,0.1);
+}
+.hero-content {
+  position: relative; z-index: 2; padding: 60px 5%; max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.hero-left { animation: fadeUp .8s ease both; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(232,119,34,0.15); border: 1px solid rgba(232,119,34,0.35);
+  padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: block; }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(52px, 6vw, 80px); font-weight: 800; color: white;
+  line-height: 0.95; letter-spacing: -1px; margin-bottom: 8px;
+}
+.hero-title span { color: var(--orange); }
+.hero-subtitle {
+  font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.55);
+  margin: 20px 0 36px; line-height: 1.7; max-width: 440px;
+}
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange); color: white; padding: 14px 32px; border-radius: 4px;
+  font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: 0.5px;
+  transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,119,34,0.35); }
+.btn-outline {
+  border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8);
+  padding: 14px 32px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  text-decoration: none; letter-spacing: 0.5px; transition: all .2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.6); color: white; }
+.hero-kpis {
+  display: flex; gap: 32px; margin-top: 48px;
+  padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-kpi-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px; font-weight: 700; color: var(--orange); display: block;
+}
+.hero-kpi-label { font-size: 12px; color: var(--gray); margin-top: 2px; }
+.hero-right {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  animation: fadeUp .8s .2s ease both; opacity: 0;
+}
+.hero-service-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 24px 20px; transition: all .25s; cursor: default;
+}
+.hero-service-card:hover { background: rgba(232,119,34,0.1); border-color: rgba(232,119,34,0.3); transform: translateY(-3px); }
+.hero-service-card:nth-child(2) { margin-top: 28px; }
+.hero-service-card:nth-child(4) { margin-top: 28px; }
+.hs-icon {
+  width: 44px; height: 44px; border-radius: 8px; background: var(--orange);
+  display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px;
+}
+.hs-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: white; margin-bottom: 6px; }
+.hs-desc  { font-size: 12.5px; color: var(--gray); line-height: 1.6; }
+
+/* ── SECTION BASE ── */
+section { padding: 96px 5%; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-tag {
+  font-size: 11px; font-weight: 700; color: var(--orange);
+  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-tag::before { content: ''; width: 28px; height: 2px; background: var(--orange); display: block; }
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(34px, 4vw, 52px); font-weight: 800;
+  color: var(--navy); line-height: 1.0; margin-bottom: 18px;
+}
+.section-title.light { color: white; }
+.section-desc { font-size: 16px; color: var(--text-muted); max-width: 540px; line-height: 1.8; }
+.section-desc.light { color: rgba(255,255,255,0.6); }
+
+/* ── SOBRE ── */
+#sobre { background: var(--off-white); }
+.sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.sobre-text p { font-size: 15px; color: var(--text-muted); line-height: 1.9; margin-bottom: 16px; }
+.sobre-info { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.info-row {
+  background: white; border-radius: 8px; padding: 14px 16px;
+  border-left: 3px solid var(--orange); box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.info-row-label { font-size: 10px; font-weight: 700; color: var(--orange); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+.info-row-val   { font-size: 13px; font-weight: 600; color: var(--navy); }
+.sobre-right { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sobre-card {
+  background: white; border-radius: 12px; padding: 28px 22px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-top: 3px solid var(--orange);
+  transition: transform .2s, box-shadow .2s;
+}
+.sobre-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.12); }
+.sobre-card:nth-child(even) { border-top-color: var(--navy); margin-top: 24px; }
+.sc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 800; color: var(--orange); line-height: 1; }
+.sc-num.navy { color: var(--navy); }
+.sc-label { font-size: 13px; font-weight: 600; color: var(--navy); margin: 6px 0 4px; }
+.sc-desc  { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── SERVIÇOS ── */
+#servicos { background: var(--navy); }
+.servicos-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 56px; flex-wrap: wrap; gap: 24px;
+}
+.servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.servico-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 32px 26px; transition: all .25s; cursor: default;
+  position: relative; overflow: hidden;
+}
+.servico-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.servico-card:hover { background: rgba(232,119,34,0.08); border-color: rgba(232,119,34,0.25); }
+.servico-card:hover::before { transform: scaleX(1); }
+.servico-icon {
+  width: 52px; height: 52px; border-radius: 10px; background: rgba(232,119,34,0.15);
+  display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px;
+  border: 1px solid rgba(232,119,34,0.2);
+}
+.servico-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: white; margin-bottom: 10px; }
+.servico-desc  { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.75; }
+.servico-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.servico-tag {
+  font-size: 10.5px; font-weight: 600; color: var(--orange);
+  background: rgba(232,119,34,0.12); border: 1px solid rgba(232,119,34,0.25);
+  padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px;
+}
+
+/* ── MISSÃO & VISÃO ── */
+#missao { background: white; }
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 56px; }
+.mv-card { border-radius: 14px; padding: 44px 38px; position: relative; overflow: hidden; }
+.mv-card.missao-card { background: var(--navy); }
+.mv-card.visao-card  { background: var(--off-white); border: 1px solid var(--gray-light); }
+.mv-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+.mv-card.missao-card .mv-top-bar { background: var(--orange); }
+.mv-card.visao-card  .mv-top-bar { background: var(--navy); }
+.mv-letter {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; margin-bottom: 24px;
+}
+.mv-card.missao-card .mv-letter { background: var(--orange); color: white; }
+.mv-card.visao-card  .mv-letter { background: var(--navy); color: white; }
+.mv-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+.mv-card.missao-card .mv-tag { color: var(--orange); }
+.mv-card.visao-card  .mv-tag { color: var(--navy); }
+.mv-text { font-size: 15px; line-height: 1.85; }
+.mv-card.missao-card .mv-text { color: rgba(255,255,255,0.7); }
+.mv-card.visao-card  .mv-text { color: var(--text-muted); }
+.valores-strip {
+  margin-top: 28px; background: var(--navy); border-radius: 14px; padding: 28px 38px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.valores-label { font-size: 12px; font-weight: 700; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
+.valores-list  { display: flex; gap: 10px; flex-wrap: wrap; }
+.valor-pill {
+  font-size: 12px; font-weight: 600; color: var(--orange);
+  border: 1.5px solid rgba(232,119,34,0.35); padding: 5px 16px; border-radius: 20px;
+  background: rgba(232,119,34,0.08); letter-spacing: 0.5px;
+}
+
+/* ── PARCEIROS ── */
+#parceiros { background: var(--off-white); }
+.parceiros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 52px; }
+.parceiro-card {
+  background: white; border-radius: 10px; padding: 22px 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; align-items: center;
+  border-left: 3px solid var(--orange); transition: all .2s;
+}
+.parceiro-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.parceiro-name { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--navy); }
+.parceiro-seg  { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+/* ── CONTATO ── */
+#contato { background: var(--navy); }
+.contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.contato-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+.contato-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 22px 20px; transition: border-color .2s;
+}
+.contato-card:hover { border-color: rgba(232,119,34,0.4); }
+.cc-label { font-size: 10px; font-weight: 700; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.cc-val   { font-size: 14px; font-weight: 500; color: white; }
+.whatsapp-btn {
+  margin-top: 32px; display: inline-flex; align-items: center; gap: 12px;
+  background: #25D366; color: white; padding: 16px 32px; border-radius: 8px;
+  font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.3px;
+  transition: all .2s; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+.whatsapp-btn:hover { background: #1ebe5c; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+.whatsapp-icon { font-size: 22px; }
+.contato-right {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 36px 32px;
+}
+.contato-right h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; color: white; margin-bottom: 8px; }
+.contato-right p { font-size: 14px; color: var(--gray); margin-bottom: 24px; line-height: 1.7; }
+.form-group { margin-bottom: 16px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px; padding: 12px 16px; font-size: 14px; color: white;
+  font-family: 'Barlow', sans-serif; outline: none; transition: border-color .2s; appearance: none;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--orange); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group select option { background: var(--navy); color: white; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-submit {
+  width: 100%; background: var(--orange); color: white; border: none; padding: 14px;
+  border-radius: 6px; font-size: 14px; font-weight: 700; font-family: 'Barlow', sans-serif;
+  cursor: pointer; letter-spacing: 0.5px; transition: all .2s; margin-top: 6px;
+}
+.form-submit:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #111e2a; padding: 24px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 2px solid var(--orange); flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: #445566; }
+.footer-copy span { color: var(--orange); font-weight: 600; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: #445566; text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--orange); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: .1s; }
+.reveal:nth-child(3) { transition-delay: .2s; }
+.reveal:nth-child(4) { transition-delay: .3s; }
+.reveal:nth-child(5) { transition-delay: .35s; }
+.reveal:nth-child(6) { transition-delay: .4s; }
+
+@media (max-width: 900px) {
+  .hero-content, .sobre-grid, .mv-grid, .contato-grid { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .servicos-grid { grid-template-columns: 1fr 1fr; }
+  .parceiros-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+@media (max-width: 560px) {
+  .servicos-grid { grid-template-columns: 1fr; }
+  .parceiros-grid { grid-template-columns: 1fr; }
+  .sobre-right { grid-template-columns: 1fr 1fr; }
+  section { padding: 64px 5%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">JV</div>
+    <div class="nav-logo-text">
+      JV SERVICE LTDA
+      <span>MECÂNICA DIESEL</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#sobre">Empresa</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#missao">Missão</a>
+    <a href="#parceiros">Parceiros</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/5531998825018" target="_blank">Falar no WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-orange-bar"></div>
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">Especialistas em Diesel · Itabira / MG</div>
+      <h1 class="hero-title">
+        Manutenção<br>
+        <span>Mecânica</span><br>
+        Diesel
+      </h1>
+      <p class="hero-subtitle">
+        Soluções sob medida para frotas e equipamentos pesados. Equipe qualificada, ferramental de ponta e atendimento emergencial 24h.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/5531998825018" class="btn-primary" target="_blank">● Solicitar Orçamento</a>
+        <a href="#servicos" class="btn-outline">Ver Serviços</a>
+      </div>
+      <div class="hero-kpis">
+        <div>
+          <span class="hero-kpi-val">+500</span>
+          <div class="hero-kpi-label">Serviços realizados</div>
+        </div>
+        <div>
+          <span class="hero-kpi-val">+10</span>
+          <div class="hero-kpi-label">Empresas atendidas</div>
+        </div>
+        <div>
+          <span class="hero-kpi-val">24h</span>
+          <div class="hero-kpi-label">Suporte emergencial</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-service-card">
+        <div class="hs-icon">⚙️</div>
+        <div class="hs-title">Mecânica Diesel</div>
+        <div class="hs-desc">Manutenção preventiva e corretiva em motores, freios e sistemas mecânicos.</div>
+      </div>
+      <div class="hero-service-card">
+        <div class="hs-icon">⚡</div>
+        <div class="hs-title">Elétrica Diesel</div>
+        <div class="hs-desc">Diagnóstico e correção de falhas elétricas em painéis, chicotes e sensores.</div>
+      </div>
+      <div class="hero-service-card">
+        <div class="hs-icon">❄️</div>
+        <div class="hs-title">Ar Condicionado</div>
+        <div class="hs-desc">Reparo, recarga e instalação com recicladora Mahle 310 ArcticPRO.</div>
+      </div>
+      <div class="hero-service-card">
+        <div class="hs-icon">🔍</div>
+        <div class="hs-title">Diagnóstico</div>
+        <div class="hs-desc">Scanner avançado e Cat ETE para identificação precisa de falhas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div class="sobre-text reveal">
+        <div class="section-tag">Quem somos</div>
+        <h2 class="section-title">Apresentação<br>da Empresa</h2>
+        <p>A <strong>JV Service LTDA</strong> é uma oficina mecânica especializada em manutenção mecânica e elétrica de veículos e equipamentos a diesel, localizada em Itabira, MG.</p>
+        <p>Com equipe altamente qualificada e ferramental de última geração, oferecemos soluções sob medida que garantem máxima eficiência e disponibilidade operacional para frotas e equipamentos pesados.</p>
+        <p>Atendemos empresas dos setores de mineração, construção civil, agronegócio e logística em toda a região central de Minas Gerais.</p>
+        <div class="sobre-info">
+          <div class="info-row"><div class="info-row-label">CNPJ</div><div class="info-row-val">43.205.420/0001-17</div></div>
+          <div class="info-row"><div class="info-row-label">Horário</div><div class="info-row-val">Seg–Sex: 8h às 18h</div></div>
+          <div class="info-row" style="grid-column:span 2"><div class="info-row-label">Endereço</div><div class="info-row-val">R. Santo Antônio, 478 – Vila Paciência, Itabira/MG</div></div>
+        </div>
+      </div>
+      <div class="sobre-right reveal">
+        <div class="sobre-card">
+          <div class="sc-num">+500</div>
+          <div class="sc-label">Serviços Realizados</div>
+          <div class="sc-desc">Histórico sólido de atendimentos em campo e oficina</div>
+        </div>
+        <div class="sobre-card">
+          <div class="sc-num navy">+10</div>
+          <div class="sc-label">Empresas Parceiras</div>
+          <div class="sc-desc">Clientes dos setores de mineração, construção e logística</div>
+        </div>
+        <div class="sobre-card">
+          <div class="sc-num">100%</div>
+          <div class="sc-label">Comprometimento</div>
+          <div class="sc-desc">Garantia formal sobre todos os serviços executados</div>
+        </div>
+        <div class="sobre-card">
+          <div class="sc-num navy">24h</div>
+          <div class="sc-label">Suporte de Campo</div>
+          <div class="sc-desc">Atendimento emergencial para minimizar paradas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-inner">
+    <div class="servicos-header">
+      <div>
+        <div class="section-tag" style="color:var(--orange-light)">O que fazemos</div>
+        <h2 class="section-title light">Nossos Serviços</h2>
+      </div>
+      <p class="section-desc light">Cobertura completa em manutenção diesel — da oficina ao campo.</p>
+    </div>
+    <div class="servicos-grid">
+      <div class="servico-card reveal">
+        <div class="servico-icon">⚙️</div>
+        <div class="servico-title">Mecânica Diesel</div>
+        <div class="servico-desc">Manutenção preventiva e corretiva especializada em motores, freios, transmissão e sistemas hidráulicos de veículos e equipamentos pesados a diesel.</div>
+        <div class="servico-tags"><span class="servico-tag">Preventiva</span><span class="servico-tag">Corretiva</span><span class="servico-tag">Campo</span></div>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-icon">⚡</div>
+        <div class="servico-title">Elétrica Diesel</div>
+        <div class="servico-desc">Diagnóstico e correção de falhas elétricas complexas em painéis, chicotes, sensores e sistemas de injeção eletrônica diesel.</div>
+        <div class="servico-tags"><span class="servico-tag">Diagnóstico</span><span class="servico-tag">Chicotes</span><span class="servico-tag">Painel</span></div>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-icon">🔍</div>
+        <div class="servico-title">Diagnóstico por Scanner</div>
+        <div class="servico-desc">Utilização do Cat ETE e scanner avançado para leitura de códigos de falha, avaliação de parâmetros e elaboração de plano de ação preciso.</div>
+        <div class="servico-tags"><span class="servico-tag">Cat ETE</span><span class="servico-tag">Scanner</span><span class="servico-tag">Laudo</span></div>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-icon">❄️</div>
+        <div class="servico-title">Ar Condicionado</div>
+        <div class="servico-desc">Reparo, manutenção e recarga de sistemas de A/C com recicladora Mahle 310 ArcticPRO, garantindo conforto e eficiência operacional.</div>
+        <div class="servico-tags"><span class="servico-tag">Mahle 310</span><span class="servico-tag">Recarga</span><span class="servico-tag">Reparo</span></div>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-icon">🛒</div>
+        <div class="servico-title">Fornecimento de Peças</div>
+        <div class="servico-desc">Estoque próprio das melhores marcas: Bosch, Nakata, Fras-le, Mahle, Tecfil, Mann Filter, Petronas, Lubrax e muito mais.</div>
+        <div class="servico-tags"><span class="servico-tag">Originais</span><span class="servico-tag">1ª linha</span><span class="servico-tag">Estoque</span></div>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-icon">🚨</div>
+        <div class="servico-title">Socorro em Campo</div>
+        <div class="servico-desc">Atendimento emergencial com mobilização rápida de equipe e ferramental completo para minimizar o tempo de parada da sua operação.</div>
+        <div class="servico-tags"><span class="servico-tag">24h</span><span class="servico-tag">Emergencial</span><span class="servico-tag">Campo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSÃO & VISÃO -->
+<section id="missao">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Nossos pilares</div>
+      <h2 class="section-title">Missão &amp; Visão</h2>
+      <p class="section-desc">Os pilares que guiam cada decisão e serviço da JV Service LTDA.</p>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card missao-card reveal">
+        <div class="mv-top-bar"></div>
+        <div class="mv-letter">M</div>
+        <div class="mv-tag">Missão</div>
+        <p class="mv-text">Oferecer soluções de manutenção mecânica e elétrica diesel com excelência técnica, agilidade e transparência, garantindo a máxima disponibilidade operacional das frotas e equipamentos pesados dos nossos clientes, com segurança e responsabilidade.</p>
+      </div>
+      <div class="mv-card visao-card reveal">
+        <div class="mv-top-bar"></div>
+        <div class="mv-letter">V</div>
+        <div class="mv-tag">Visão</div>
+        <p class="mv-text">Ser reconhecida como a empresa de manutenção diesel mais confiável e completa da região de Minas Gerais, expandindo nossa presença e referenciando um novo padrão de qualidade e comprometimento no setor de equipamentos pesados.</p>
+      </div>
+    </div>
+    <div class="valores-strip reveal">
+      <span class="valores-label">Valores</span>
+      <div class="valores-list">
+        <span class="valor-pill">Qualidade</span>
+        <span class="valor-pill">Transparência</span>
+        <span class="valor-pill">Agilidade</span>
+        <span class="valor-pill">Segurança</span>
+        <span class="valor-pill">Comprometimento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCEIROS -->
+<section id="parceiros">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Quem confia</div>
+      <h2 class="section-title">Empresas Parceiras</h2>
+      <p class="section-desc">Empresas dos setores de mineração, construção civil e logística que confiam na JV Service.</p>
+    </div>
+    <div class="parceiros-grid">
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">Solum Demolidora</div><div class="parceiro-seg">Demolição e Terraplanagem</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">In-Haus Industrial</div><div class="parceiro-seg">Indústria</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">Armac</div><div class="parceiro-seg">Locação de Equipamentos</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">GEOSOL</div><div class="parceiro-seg">Geotecnia</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">REDE Sondagens</div><div class="parceiro-seg">Sondagens Geotécnicas</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">Terrabel</div><div class="parceiro-seg">Construção</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">CESBE Engenharia</div><div class="parceiro-seg">Engenharia Civil</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">Consórcio Rio Tanque</div><div class="parceiro-seg">Infraestrutura</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">M2 Ferraço</div><div class="parceiro-seg">Ferro e Aço</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">UNIFEI</div><div class="parceiro-seg">Universidade</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">Pref. Santa Maria de Itabira</div><div class="parceiro-seg">Setor Público</div></div></div>
+      <div class="parceiro-card reveal"><div><div class="parceiro-name">Construtora Barbosa Mello</div><div class="parceiro-seg">Construção Civil</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-inner">
+    <div class="contato-grid">
+      <div class="reveal">
+        <div class="section-tag" style="color:var(--orange-light)">Fale conosco</div>
+        <h2 class="section-title light">Vamos<br>Começar?</h2>
+        <p class="section-desc light">Entre em contato e receba uma proposta personalizada para a sua frota ou equipamento.</p>
+        <div class="contato-cards">
+          <div class="contato-card"><div class="cc-label">Telefone / WhatsApp</div><div class="cc-val">(31) 99882-5018</div></div>
+          <div class="contato-card"><div class="cc-label">E-mail</div><div class="cc-val">jvservice0@gmail.com</div></div>
+          <div class="contato-card"><div class="cc-label">Endereço</div><div class="cc-val">R. Santo Antônio, 478 – Itabira/MG</div></div>
+          <div class="contato-card"><div class="cc-label">Horário</div><div class="cc-val">Seg–Sex: 8h às 18h</div></div>
+        </div>
+        <a class="whatsapp-btn" href="https://wa.me/5531998825018" target="_blank">
+          <span class="whatsapp-icon">💬</span>
+          Falar no WhatsApp Agora
+        </a>
+      </div>
+      <div class="contato-right reveal">
+        <h3>Solicite um Orçamento</h3>
+        <p>Preencha o formulário e nossa equipe entrará em contato em até 2 horas úteis.</p>
+        <div class="form-row">
+          <div class="form-group"><input type="text" placeholder="Seu nome"></div>
+          <div class="form-group"><input type="text" placeholder="Empresa"></div>
+        </div>
+        <div class="form-group"><input type="tel" placeholder="WhatsApp / Telefone"></div>
+        <div class="form-group">
+          <select>
+            <option value="" disabled selected>Tipo de serviço</option>
+            <option>Mecânica Diesel</option>
+            <option>Elétrica Diesel</option>
+            <option>Diagnóstico por Scanner</option>
+            <option>Ar Condicionado</option>
+            <option>Fornecimento de Peças</option>
+            <option>Socorro em Campo</option>
+          </select>
+        </div>
+        <div class="form-group"><textarea placeholder="Descreva o problema ou necessidade..."></textarea></div>
+        <button class="form-submit" onclick="this.textContent='✓ Enviado!'; this.style.background='#27AE60'; setTimeout(()=>{this.textContent='Enviar Solicitação →'; this.style.background='';},3000)">Enviar Solicitação →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 <span>JV Service LTDA</span> · CNPJ 43.205.420/0001-17 · Itabira, Minas Gerais</div>
+  <div class="footer-links">
+    <a href="#hero">Início</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+    <a href="https://wa.me/5531998825018" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+});
+</script>
+</body>
+</html>
