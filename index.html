@@ -36,7 +36,7 @@ nav {
   backdrop-filter: blur(12px);
   padding: 0 5%;
   display: flex; align-items: center; justify-content: space-between;
-  height: 64px;
+  height: 76px;
   border-bottom: 2px solid var(--orange);
 }
 .nav-logo { display: flex; align-items: center; gap: 12px; }
@@ -68,7 +68,7 @@ nav {
 #hero {
   min-height: 100vh; background: var(--navy);
   display: flex; align-items: center;
-  position: relative; overflow: hidden; padding-top: 64px;
+  position: relative; overflow: hidden; padding-top: 76px;
 }
 .hero-bg-pattern {
   position: absolute; inset: 0; opacity: 0.04;
@@ -76,7 +76,7 @@ nav {
     repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px),
     repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px);
 }
-.hero-orange-bar { position: absolute; top: 64px; left: 0; right: 0; height: 4px; background: var(--orange); }
+.hero-orange-bar { position: absolute; top: 76px; left: 0; right: 0; height: 4px; background: var(--orange); }
 .hero-circle-1 {
   position: absolute; right: -120px; top: -80px; width: 520px; height: 520px; border-radius: 50%;
   background: rgba(232,119,34,0.08); border: 1px solid rgba(232,119,34,0.12);
@@ -231,7 +231,7 @@ section { padding: 96px 5%; }
 .mv-card.missao-card .mv-top-bar { background: var(--orange); }
 .mv-card.visao-card  .mv-top-bar { background: var(--navy); }
 .mv-letter {
-  width: 64px; height: 64px; border-radius: 50%;
+  width: 64px; height: 76px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; margin-bottom: 24px;
 }
@@ -356,7 +356,7 @@ footer {
 <!-- NAVBAR -->
 <nav>
   <div class="nav-logo">
-    <div class="nav-logo-icon">JV</div>
+    <div class="nav-logo-icon" style="background:#ffffff;border-radius:16px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:5px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.15);"><img src="data:image/png;base64,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" alt="JV Service" style="width:100%;height:100%;object-fit:contain;"></div>
     <div class="nav-logo-text">
       JV SERVICE LTDA
       <span>MECÂNICA DIESEL</span>
@@ -589,43 +589,22 @@ footer {
 <!-- CONTATO -->
 <section id="contato">
   <div class="section-inner">
-    <div class="contato-grid">
-      <div class="reveal">
-        <div class="section-tag" style="color:var(--orange-light)">Fale conosco</div>
+    <div class="contato-grid" style="grid-template-columns:1fr;">
+      <div class="reveal" style="max-width:680px;margin:0 auto;text-align:center;">
+        <div class="section-tag" style="color:var(--orange-light);justify-content:center;">Fale conosco</div>
         <h2 class="section-title light">Vamos<br>Começar?</h2>
-        <p class="section-desc light">Entre em contato e receba uma proposta personalizada para a sua frota ou equipamento.</p>
-        <div class="contato-cards">
+        <p class="section-desc light" style="margin:0 auto 0;">Entre em contato e receba uma proposta personalizada para a sua frota ou equipamento.</p>
+        <div class="contato-cards" style="max-width:680px;margin:36px auto 0;">
           <div class="contato-card"><div class="cc-label">Telefone / WhatsApp</div><div class="cc-val">(31) 99882-5018</div></div>
           <div class="contato-card"><div class="cc-label">E-mail</div><div class="cc-val">jvservice0@gmail.com</div></div>
           <div class="contato-card"><div class="cc-label">Endereço</div><div class="cc-val">R. Santo Antônio, 478 – Itabira/MG</div></div>
           <div class="contato-card"><div class="cc-label">Horário</div><div class="cc-val">Seg–Sex: 8h às 18h</div></div>
         </div>
-        <a class="whatsapp-btn" href="https://wa.me/5531998825018" target="_blank">
+        <a class="whatsapp-btn" style="margin:32px auto 0;display:flex;width:fit-content;" href="https://wa.me/5531998825018" target="_blank">
           <span class="whatsapp-icon">💬</span>
           Falar no WhatsApp Agora
         </a>
       </div>
-      <div class="contato-right reveal">
-        <h3>Solicite um Orçamento</h3>
-        <p>Preencha o formulário e nossa equipe entrará em contato em até 2 horas úteis.</p>
-        <div class="form-row">
-          <div class="form-group"><input type="text" placeholder="Seu nome"></div>
-          <div class="form-group"><input type="text" placeholder="Empresa"></div>
-        </div>
-        <div class="form-group"><input type="tel" placeholder="WhatsApp / Telefone"></div>
-        <div class="form-group">
-          <select>
-            <option value="" disabled selected>Tipo de serviço</option>
-            <option>Mecânica Diesel</option>
-            <option>Elétrica Diesel</option>
-            <option>Diagnóstico por Scanner</option>
-            <option>Ar Condicionado</option>
-            <option>Fornecimento de Peças</option>
-            <option>Socorro em Campo</option>
-          </select>
-        </div>
-        <div class="form-group"><textarea placeholder="Descreva o problema ou necessidade..."></textarea></div>
-        <button class="form-submit" onclick="this.textContent='✓ Enviado!'; this.style.background='#27AE60'; setTimeout(()=>{this.textContent='Enviar Solicitação →'; this.style.background='';},3000)">Enviar Solicitação →</button>
       </div>
     </div>
   </div>
